@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-5">
+    <div class="row w-100 justify-content-center">
+        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <!-- Header Section -->
+                <div class="card-header bg-gradient-primary text-white text-center py-4 border-0">
+                    <div class="mb-3">
+                        <i class="fas fa-wallet fa-3x text-white mb-3"></i>
+                        <h1 class="h3 fw-bold mb-2">Welcome Back</h1>
+                        <p class="mb-0 opacity-75">Sign in to your SpendWise account</p>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="card-body p-4 p-md-5">
+                    <form method="POST" action="{{ url_for('auth.login') }}" class="needs-validation" novalidate>
+                        <div class="mb-4">
+                            <label for="email" class="form-label fw-semibold text-muted mb-2">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-envelope text-muted"></i>
+                                </span>
+                                <input type="email" class="form-control form-control-lg border-start-0 ps-0"
+                                       id="email" name="email" placeholder="you@example.com"
+                                       required autocomplete="email" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label fw-semibold text-muted mb-2">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-lock text-muted"></i>
+                                </span>
+                                <input type="password" class="form-control form-control-lg border-start-0 ps-0"
+                                       id="password" name="password" placeholder="Enter your password"
+                                       required autocomplete="current-password" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg w-100 fw-semibold py-3 rounded-pill">
+                                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-3">Don't have an account?</p>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary btn-lg rounded-pill fw-semibold">
+                            <i class="fas fa-user-plus me-2"></i>Create Account
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-4">
+                <p class="text-muted small mb-0">Secure & Private • Built for Financial Clarity</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.shadow-lg {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.input-group-text {
+    border-radius: 12px 0 0 12px !important;
+}
+
+.form-control {
+    border-radius: 0 12px 12px 0 !important;
+    border-left: none !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.15);
+    border-color: #0ea5e9;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+}
+
+.btn-outline-primary {
+    border: 2px solid #0ea5e9;
+    color: #0ea5e9;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    border-color: #0ea5e9;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.opacity-75 {
+    opacity: 0.75;
+}
+</style>
+{% endblock %}

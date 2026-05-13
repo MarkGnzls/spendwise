@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-5">
+    <div class="row w-100 justify-content-center">
+        <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <!-- Header Section -->
+                <div class="card-header bg-gradient-success text-white text-center py-4 border-0">
+                    <div class="mb-3">
+                        <i class="fas fa-rocket fa-3x text-white mb-3"></i>
+                        <h1 class="h3 fw-bold mb-2">Join SpendWise</h1>
+                        <p class="mb-0 opacity-75">Start your financial journey today</p>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="card-body p-4 p-md-5">
+                    <form method="POST" action="{{ url_for('auth.register') }}" class="needs-validation" novalidate>
+                        <div class="mb-4">
+                            <label for="username" class="form-label fw-semibold text-muted mb-2">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-user text-muted"></i>
+                                </span>
+                                <input type="text" class="form-control form-control-lg border-start-0 ps-0"
+                                       id="username" name="username" placeholder="Choose a username"
+                                       required autocomplete="username" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="form-label fw-semibold text-muted mb-2">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-envelope text-muted"></i>
+                                </span>
+                                <input type="email" class="form-control form-control-lg border-start-0 ps-0"
+                                       id="email" name="email" placeholder="you@example.com"
+                                       required autocomplete="email" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label fw-semibold text-muted mb-2">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-lock text-muted"></i>
+                                </span>
+                                <input type="password" class="form-control form-control-lg border-start-0 ps-0"
+                                       id="password" name="password" placeholder="Create a strong password"
+                                       required autocomplete="new-password" minlength="6" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="confirm" class="form-label fw-semibold text-muted mb-2">Confirm Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0">
+                                    <i class="fas fa-lock text-muted"></i>
+                                </span>
+                                <input type="password" class="form-control form-control-lg border-start-0 ps-0"
+                                       id="confirm" name="confirm" placeholder="Confirm your password"
+                                       required autocomplete="new-password" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-success btn-lg w-100 fw-semibold py-3 rounded-pill">
+                                <i class="fas fa-user-plus me-2"></i>Create Account
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center">
+                        <p class="text-muted mb-3">Already have an account?</p>
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-success btn-lg rounded-pill fw-semibold">
+                            <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-4">
+                <p class="text-muted small mb-0">Secure & Private • Built for Financial Clarity</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.shadow-lg {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.input-group-text {
+    border-radius: 12px 0 0 12px !important;
+}
+
+.form-control {
+    border-radius: 0 12px 12px 0 !important;
+    border-left: none !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+}
+
+.btn-outline-success {
+    border: 2px solid #10b981;
+    color: #10b981;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-color: #10b981;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.opacity-75 {
+    opacity: 0.75;
+}
+</style>
+
+<script>
+// Password confirmation validation
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const password = document.getElementById('password');
+    const confirm = document.getElementById('confirm');
+
+    function validatePassword() {
+        if (password.value !== confirm.value) {
+            confirm.setCustomValidity('Passwords do not match');
+        } else {
+            confirm.setCustomValidity('');
+        }
+    }
+
+    password.addEventListener('change', validatePassword);
+    confirm.addEventListener('keyup', validatePassword);
+
+    form.addEventListener('submit', function(e) {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Edit Income{% endblock %}
+{% block content %}
+<div class="row justify-content-center mb-4">
+    <div class="col-xl-6 col-lg-8">
+        <div class="card soft-card p-5">
+            <h1 class="h3 fw-bold mb-1">Edit Income</h1>
+            <p class="text-muted mb-4">Update your income details.</p>
+            <form method="POST" action="{{ url_for('income.edit_income', item_id=income.id) }}">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Source</label>
+                    <input type="text" class="form-control" name="source" value="{{ income.source }}" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Amount</label>
+                    <input type="number" step="0.01" class="form-control" name="amount" value="{{ '%.2f'|format(income.amount) }}" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Date</label>
+                    <input type="date" class="form-control" name="date_created" value="{{ income.date_created.strftime('%Y-%m-%d') }}" />
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea class="form-control" name="description" rows="3">{{ income.description }}</textarea>
+                </div>
+                <button class="btn btn-success w-100 py-2 fw-semibold" type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

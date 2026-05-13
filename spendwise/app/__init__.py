@@ -39,9 +39,8 @@ def create_app(config_class=Config):
         
         # Auto-initialize database tables if they don't exist
         from app.models import user, expense, income  # noqa: F401
-        try:
+        with app.app_context():
             db.create_all()
-        except Exception as e:
-            app.logger.warning(f"Could not auto-initialize database: {e}")
+    from app.models import user, expense, income  # just import models
 
     return app

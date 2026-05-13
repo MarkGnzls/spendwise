@@ -1,6 +1,10 @@
-from app import create_app
+from flask import Flask
 
-app = create_app()
+def create_app():
+    app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    # register routes here (if using blueprints)
+    # from .routes import main
+    # app.register_blueprint(main)
+
+    return app

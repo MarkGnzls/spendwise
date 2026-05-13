@@ -106,9 +106,9 @@
 <!-- Chart Data -->
 <script>
 const categoryLabels = {{ category_labels | tojson }};
-const categoryData = {{ category_data | tojson }};
-const monthlyLabels = {{ monthly_labels | tojson }};
-const monthlyIncomeData = {{ monthly_income_data | tojson }};
-const monthlyExpenseData = {{ monthly_expense_data | tojson }};
+const categoryData = {{ category_values | tojson }};
+const monthlyLabels = {{ month_labels | tojson }};
+const monthlyIncomeData = {{ month_incomes | tojson }};
+const monthlyExpenseData = {{ month_expenses | tojson }};
 </script>
 {% endblock %}
